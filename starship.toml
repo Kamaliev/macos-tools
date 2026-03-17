@@ -1,0 +1,44 @@
+# Starship prompt config
+
+# Compact — no blank line between prompts
+add_newline = false
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$python\
+$docker_context\
+$kubernetes\
+$cmd_duration\
+$line_break\
+$character"""
+
+[character]
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+format = "on [$symbol$branch]($style) "
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+
+[docker_context]
+format = "via [$symbol$context]($style) "
+only_with_files = true
+
+[kubernetes]
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style) '
+
+[cmd_duration]
+min_time = 2_000
+format = "took [$duration]($style) "
